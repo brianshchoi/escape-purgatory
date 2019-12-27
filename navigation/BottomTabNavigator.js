@@ -5,11 +5,12 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 import ScreenOne from '../screens/ScreenOne';
 import ScreenTwo from '../screens/ScreenTwo';
 import Information from '../screens/Information';
+import InformationModal from '../etc/InformationModal';
 
 const BottomTabNavigator = createBottomTabNavigator({
     Information: Information,
     Shop: ScreenTwo,
-    Map: ScreenOne,
+    Map: InformationModal,
 }, {
     tabBarOptions: {
         showLabel: true
