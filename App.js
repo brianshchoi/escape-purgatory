@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import Tabs from './components/Tabs';
 import AppNavigator from './navigation/AppNavigator';
 
 export default function App() {
