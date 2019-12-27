@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text, Button, ImageBackground } from 'react-native';
 
 export default class ScreenOne extends React.Component {
 
@@ -7,7 +7,9 @@ export default class ScreenOne extends React.Component {
         return (
             <View style={style.container}>
                 <Text>Screen One</Text>
+                <Button title='hi'/>
             </View>
+              
         )
     }
 }
@@ -17,5 +19,6 @@ const style = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center'
+        
     }
 })
