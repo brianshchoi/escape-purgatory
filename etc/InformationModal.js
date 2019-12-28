@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text, TouchableHighlight, Modal, Alert, Image } from 'react-native';
 import { Icon } from 'react-native-elements'
-import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export default class InformationModal extends React.Component {
 
@@ -11,8 +10,17 @@ export default class InformationModal extends React.Component {
         "Greed": require("../assets/sin-icons/Greed.png"),
         "Lust": require("../assets/sin-icons/Lust.png"),
         "Pride": require("../assets/sin-icons/Pride.png"),
-        "Sloth": require("../assets/sin-icons/Sloth.png"),
         "Wrath": require("../assets/sin-icons/Wrath.png"),
+        "Sloth": require("../assets/sin-icons/Sloth.png")
+    }
+    difficultyList = {
+        "Envy": require('../stars/3.jpg'),
+        "Gluttony": require('../stars/2.jpg'),
+        "Greed": require('../stars/3.jpg'),
+        "Lust": require('../stars/3.5.jpg'),
+        "Pride": require('../stars/4.jpg'),
+        "Wrath": require('../stars/4.jpg'),
+        "Sloth": require('../stars/5.png')
     }
 
     state = {
@@ -27,6 +35,13 @@ export default class InformationModal extends React.Component {
         return <Image
             style={{ width: 80, height: 80, resizeMode: 'stretch' }}
             source={this.sinsList[sin]}
+        />
+    }
+
+    getDifficulty(difficulty) {
+        return <Image
+            style={{width: 240, height: 40}}
+            source={this.difficultyList[difficulty]}
         />
     }
 
@@ -48,15 +63,21 @@ export default class InformationModal extends React.Component {
                                 onPress={() => this.setModalVisible(!this.state.modalVisible)} />
                         </View>
                         <Text>Hello World! {this.props.informationType}</Text>
-
+                        {this.getDifficulty(this.props.informationType)}
                     </View>
                 </Modal>
 
-                <TouchableOpacity style={styles.blocks} onPress={() => this.setModalVisible(true)}>
-                    {this.getImage(this.props.informationType)}
-                    <Text style={styles.blockText}> {this.props.informationType} </Text>
-                </TouchableOpacity>
+                {this.getImage(this.props.informationType)}
 
+                <TouchableHighlight
+                    onPress={() => {
+                        this.setModalVisible(true);
+                    }}>
+
+
+
+                    <Text> {this.props.informationType}</Text>
+                </TouchableHighlight>
             </View >
         );
     }
@@ -69,14 +90,4 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-end',
         justifyContent: 'center',
     },
-    blocks: {
-        flex: 1,
-        alignSelf: 'center',
-        justifyContent: 'center'
-    },
-    blockText: {
-        textAlign: "center",
-        textAlignVertical: "center",
-        fontSize: 20
-    }
 });
