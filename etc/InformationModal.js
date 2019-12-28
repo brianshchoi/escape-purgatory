@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Text, TouchableHighlight, Modal, Alert, Image } from 'react-native';
 import { Icon } from 'react-native-elements'
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export default class InformationModal extends React.Component {
 
@@ -10,6 +11,7 @@ export default class InformationModal extends React.Component {
         "Greed": require("../assets/sin-icons/Greed.png"),
         "Lust": require("../assets/sin-icons/Lust.png"),
         "Pride": require("../assets/sin-icons/Pride.png"),
+        "Sloth": require("../assets/sin-icons/Sloth.png"),
         "Wrath": require("../assets/sin-icons/Wrath.png"),
     }
 
@@ -50,17 +52,11 @@ export default class InformationModal extends React.Component {
                     </View>
                 </Modal>
 
-                {this.getImage(this.props.informationType)}
+                <TouchableOpacity style={styles.blocks} onPress={() => this.setModalVisible(true)}>
+                    {this.getImage(this.props.informationType)}
+                    <Text style={styles.blockText}> {this.props.informationType} </Text>
+                </TouchableOpacity>
 
-                <TouchableHighlight
-                    onPress={() => {
-                        this.setModalVisible(true);
-                    }}>
-
-
-
-                    <Text> {this.props.informationType}</Text>
-                </TouchableHighlight>
             </View >
         );
     }
@@ -73,4 +69,14 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-end',
         justifyContent: 'center',
     },
+    blocks: {
+        flex: 1,
+        alignSelf: 'center',
+        justifyContent: 'center'
+    },
+    blockText: {
+        textAlign: "center",
+        textAlignVertical: "center",
+        fontSize: 20
+    }
 });

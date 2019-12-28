@@ -12,7 +12,6 @@ const sins = [
     { key: 'Envy' },
 ]
 
-
 export default class Information extends React.Component {
 
     render() {
@@ -20,8 +19,9 @@ export default class Information extends React.Component {
             <View style={style.container}>
                 <FlatList
                     data={sins}
-                    /* renderItem={({ item }) => <Button title={item.key} style={style.item}></Button>} */
                     renderItem={({ item }) => <InformationModal informationType={item.key} />}
+                    numColumns={3}
+                    contentContainerStyle={{ alignItems: "flex-end" }}
                 />
             </View>
         )
