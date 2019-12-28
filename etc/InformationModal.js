@@ -40,7 +40,7 @@ export default class InformationModal extends React.Component {
         "Wrath": '잘난 체하며 뽐내고 건방짐. 혹은 겸손하지 않거나 남에게 가르침을 받지 않으려고 하는 것. 교만을 이기려면 겸손한 자세, 그리고 가르침을 받아 드릴 열린 마음이 필요합니다.',
         "Sloth": '잘난 체하며 뽐내고 건방짐. 혹은 겸손하지 않거나 남에게 가르침을 받지 않으려고 하는 것. 교만을 이기려면 겸손한 자세, 그리고 가르침을 받아 드릴 열린 마음이 필요합니다.',
     }
-    
+
 
     state = {
         modalVisible: false,
@@ -59,15 +59,15 @@ export default class InformationModal extends React.Component {
 
     getDifficulty(difficulty) {
         return <Image
-            style={{width: 240, height: 40}}
+            style={{ width: 240, height: 40 }}
             source={this.difficultyList[difficulty]}
         />
     }
-    getDescription(description){
+    getDescription(description) {
         return <Text>{this.descriptionList[description]}</Text>
     }
 
-    getKorean(korean){
+    getKorean(korean) {
         return <Text>{this.koreanList[korean]}</Text>
     }
 
@@ -82,13 +82,13 @@ export default class InformationModal extends React.Component {
                         Alert.alert('Modal has been closed.');
                     }}>
                     <View style={{ marginTop: 22 }}>
-                        <View style={styles.closeView}>
+                        <View>
                             <Icon
                                 name="close"
                                 size={28}
                                 onPress={() => this.setModalVisible(!this.state.modalVisible)} />
                         </View>
-                        <Text style={styles.closeView}>{this.props.informationType} {this.getKorean(this.props.informationType)}</Text>
+                        <Text style={styles.header}>{this.props.informationType} {this.getKorean(this.props.informationType)}</Text>
                         <Text>{this.getDescription(this.props.informationType)}</Text>
                         {this.getDifficulty(this.props.informationType)}
                     </View>
@@ -112,9 +112,11 @@ export default class InformationModal extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    closeView: {
-        paddingRight: 18,
-        alignSelf: 'flex-end',
-        justifyContent: 'center',
+    header: {
+        marginTop: 20,
+        textAlign: 'center',
+        color: 'black',
+        fontWeight: 'bold',
+        fontSize: 30
     },
 });
