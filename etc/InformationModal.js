@@ -4,6 +4,15 @@ import { Icon } from 'react-native-elements'
 
 export default class InformationModal extends React.Component {
 
+    sinsList = {
+        "Envy": require("../assets/sin-icons/Envy.png"),
+        "Gluttony": require("../assets/sin-icons/Gluttony.png"),
+        "Greed": require("../assets/sin-icons/Greed.png"),
+        "Lust": require("../assets/sin-icons/Lust.png"),
+        "Pride": require("../assets/sin-icons/Pride.png"),
+        "Wrath": require("../assets/sin-icons/Wrath.png"),
+    }
+
     state = {
         modalVisible: false,
     };
@@ -13,27 +22,10 @@ export default class InformationModal extends React.Component {
     }
 
     getImage(sin) {
-        let uri = "../assets/sin-icons/";
-
-        switch (sin) {
-            // case 'Pride, Lust Gluttony Greed Sloth Wrath Envy'
-            case 'Pride':
-                return uri + "peacock.png"
-            case 'Lust':
-                return uri + "goat.png"
-            case 'Gluttony':
-                return uri + "pig.png"
-            case 'Greed':
-                return uri + "toad.png"
-            case 'Sloth':
-                return uri + "sloth.png"
-            case 'Wrath':
-                return uri + "lion.png"
-            case 'Envy':
-                return uri + "snake.png"
-        }
-
-
+        return <Image
+            style={{ width: 80, height: 80, resizeMode: 'stretch' }}
+            source={this.sinsList[sin]}
+        />
     }
 
     render() {
@@ -58,23 +50,15 @@ export default class InformationModal extends React.Component {
                     </View>
                 </Modal>
 
-                {/* <Image
-                    style={{ width: 80, height: 80, resizeMode: 'stretch' }}
-                    source={require(this.getImage(this.props.informationType))}
+                {this.getImage(this.props.informationType)}
 
-                /> */}
-
-                <Image
-                    style={{ width: 80, height: 80, resizeMode: 'stretch' }}
-                    source={require("../assets/sin-icons/snake.png")}
-
-                />
                 <TouchableHighlight
                     onPress={() => {
                         this.setModalVisible(true);
                     }}>
 
-                    {/* <Image style={{ width: 50, height: 50 }} source={require('./snake.png')} /> */}
+
+
                     <Text> {this.props.informationType}</Text>
                 </TouchableHighlight>
             </View >
