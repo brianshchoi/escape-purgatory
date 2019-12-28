@@ -1,15 +1,15 @@
 import React from 'react';
-import { View, StyleSheet, FlatList, Button } from 'react-native';
+import { View, StyleSheet, FlatList, Text } from 'react-native';
 import InformationModal from '../etc/InformationModal';
 
 const sins = [
-    { key: 'Pride', difficulty: '../stars/4.jpg'},
-    { key: 'Lust', difficulty: '../stars/3.5.jpg' },
-    { key: 'Gluttony', difficulty: '../stars/2.jpg' },
-    { key: 'Greed', difficulty: '../stars/3.jpg' },
-    { key: 'Sloth', difficulty: '../stars/5.png' },
-    { key: 'Wrath', difficulty: '../stars/4.jpg' },
-    { key: 'Envy', difficulty: '../stars/3.jpg' },
+    { key: 'Pride' },
+    { key: 'Lust' },
+    { key: 'Gluttony' },
+    { key: 'Greed' },
+    { key: 'Sloth' },
+    { key: 'Wrath' },
+    { key: 'Envy' },
 ]
 
 
@@ -18,10 +18,11 @@ export default class Information extends React.Component {
     render() {
         return (
             <View style={style.container}>
+                <Text> Escape Purgatory </Text>
                 <FlatList
                     data={sins}
-                    /* renderItem={({ item }) => <Button title={item.key} style={style.item}></Button>} */
                     renderItem={({ item }) => <InformationModal informationType={item.key} />}
+                    numColumns={3}
                 />
             </View>
         )
@@ -34,7 +35,8 @@ const style = StyleSheet.create({
         paddingTop: 40,
         paddingLeft: 10,
         paddingRight: 10,
-        alignItems: 'flex-start',
+        width: "100%",
+        alignItems: 'center',
         justifyContent: 'center'
     },
 
