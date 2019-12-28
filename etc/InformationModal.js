@@ -40,7 +40,7 @@ export default class InformationModal extends React.Component {
         "Wrath": '잘난 체하며 뽐내고 건방짐. 혹은 겸손하지 않거나 남에게 가르침을 받지 않으려고 하는 것. 교만을 이기려면 겸손한 자세, 그리고 가르침을 받아 드릴 열린 마음이 필요합니다.',
         "Sloth": '잘난 체하며 뽐내고 건방짐. 혹은 겸손하지 않거나 남에게 가르침을 받지 않으려고 하는 것. 교만을 이기려면 겸손한 자세, 그리고 가르침을 받아 드릴 열린 마음이 필요합니다.',
     }
-    
+
 
     state = {
         modalVisible: false,
@@ -55,20 +55,6 @@ export default class InformationModal extends React.Component {
             style={{ width: 80, height: 80, resizeMode: 'stretch' }}
             source={this.sinsList[sin]}
         />
-    }
-
-    getDifficulty(difficulty) {
-        return <Image
-            style={{ width: 240, height: 40 }}
-            source={this.difficultyList[difficulty]}
-        />
-    }
-    getDescription(description){
-        return <Text>{this.descriptionList[description]}</Text>
-    }
-
-    getKorean(korean){
-        return <Text>{this.koreanList[korean]}</Text>
     }
 
     render() {
@@ -88,15 +74,17 @@ export default class InformationModal extends React.Component {
                                 size={28}
                                 onPress={() => this.setModalVisible(!this.state.modalVisible)} />
                         </View>
-                        <Text style={styles.closeView}>{this.props.informationType} {this.getKorean(this.props.informationType)}</Text>
-                        <Text>{this.getDescription(this.props.informationType)}</Text>
-                        {this.getDifficulty(this.props.informationType)}
+                        <Text style={styles.title}>{this.props.sinType} {this.koreanList[this.props.sinType]} </Text>
+                        <Image style={styles.difficulty} source={this.difficultyList[this.props.sinType]} />
+
+                        <Text style={styles.description}>{this.descriptionList[this.props.sinType]}</Text>
+
                     </View>
                 </Modal>
 
                 <TouchableOpacity style={styles.blocks} onPress={() => this.setModalVisible(true)}>
-                    {this.getImage(this.props.informationType)}
-                    <Text style={styles.blockText}> {this.props.informationType} </Text>
+                    {this.getImage(this.props.sinType)}
+                    <Text style={styles.blockText}> {this.props.sinType} </Text>
                 </TouchableOpacity>
 
             </View >
@@ -106,14 +94,29 @@ export default class InformationModal extends React.Component {
 }
 
 const styles = StyleSheet.create({
+
     closeView: {
         paddingRight: 18,
         alignSelf: 'flex-end',
         justifyContent: 'center',
     },
-
+    title: {
+        textAlign: 'center',
+        textAlignVertical: 'center',
+        fontSize: 40,
+        paddingBottom: 12,
+    },
+    difficulty: {
+        alignSelf: 'center',
+        width: "60%",
+        height: 40,
+        marginBottom: 18,
+    },
+    description: {
+        fontSize: 24,
+        padding: 18,
+    },
     blockText: {
-        paddingTop: 5,
         textAlign: 'center',
         textAlignVertical: 'center',
         fontSize: 20
