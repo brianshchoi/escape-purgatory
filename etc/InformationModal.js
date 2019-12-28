@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableHighlight, Modal, Alert } from 'react-native';
+import { StyleSheet, View, Text, TouchableHighlight, Modal, Alert } from 'react-native';
 import { Icon } from 'react-native-elements'
 
 export default class InformationModal extends React.Component {
@@ -22,22 +22,15 @@ export default class InformationModal extends React.Component {
                     onRequestClose={() => {
                         Alert.alert('Modal has been closed.');
                     }}>
-                    <View style={{ marginTop: 40 }}>
-                        <View>
-                            <Text>Hello World! {this.props.informationType}</Text>
-
-
-                            {/* <Icon name="md-close" style={{ position: 'absolute', right: 5, top: 5 }} /> */}
-
-
-                            <TouchableHighlight
-                                onPress={() => {
-                                    this.setModalVisible(!this.state.modalVisible);
-                                }}>
-                                {/* <Icon name="close" /> */}
-                                <Text>Hide Modal</Text>
-                            </TouchableHighlight>
+                    <View style={{ marginTop: 22 }}>
+                        <View style={styles.closeView}>
+                            <Icon
+                                name="close"
+                                size={28}
+                                onPress={() => this.setModalVisible(!this.state.modalVisible)} />
                         </View>
+                        <Text>Hello World! {this.props.informationType}</Text>
+
                     </View>
                 </Modal>
 
@@ -48,11 +41,19 @@ export default class InformationModal extends React.Component {
                     {/* <Image style={{ width: 50, height: 50 }} source={require('./snake.png')} /> */}
                     <Text>{this.props.informationType}</Text>
                 </TouchableHighlight>
-            </View>
+            </View >
         );
     }
 
 }
+
+const styles = StyleSheet.create({
+    closeView: {
+        paddingRight: 18,
+        alignSelf: 'flex-end',
+        justifyContent: 'center',
+    },
+});
 
 // item: {
 //     padding: 10,
