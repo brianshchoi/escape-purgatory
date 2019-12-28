@@ -6,11 +6,12 @@ import ScreenOne from '../screens/ScreenOne';
 import ScreenTwo from '../screens/ScreenTwo';
 import Information from '../screens/Information';
 import InformationModal from '../etc/InformationModal';
+import Maps from '../screens/Maps';
 
 const BottomTabNavigator = createBottomTabNavigator({
     Information: Information,
     Shop: ScreenTwo,
-    Map: InformationModal,
+    Map: Maps,
 }, {
     tabBarOptions: {
         showLabel: true
