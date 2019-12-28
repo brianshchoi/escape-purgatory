@@ -1,8 +1,17 @@
 import React from 'react';
-import { View, Text, TouchableHighlight, Modal, Alert } from 'react-native';
+import { StyleSheet, View, Text, TouchableHighlight, Modal, Alert, Image } from 'react-native';
 import { Icon } from 'react-native-elements'
 
 export default class InformationModal extends React.Component {
+
+    sinsList = {
+        "Envy": require("../assets/sin-icons/Envy.png"),
+        "Gluttony": require("../assets/sin-icons/Gluttony.png"),
+        "Greed": require("../assets/sin-icons/Greed.png"),
+        "Lust": require("../assets/sin-icons/Lust.png"),
+        "Pride": require("../assets/sin-icons/Pride.png"),
+        "Wrath": require("../assets/sin-icons/Wrath.png"),
+    }
 
     state = {
         modalVisible: false,
@@ -10,6 +19,13 @@ export default class InformationModal extends React.Component {
 
     setModalVisible(visible) {
         this.setState({ modalVisible: visible });
+    }
+
+    getImage(sin) {
+        return <Image
+            style={{ width: 80, height: 80, resizeMode: 'stretch' }}
+            source={this.sinsList[sin]}
+        />
     }
 
     render() {
@@ -22,41 +38,39 @@ export default class InformationModal extends React.Component {
                     onRequestClose={() => {
                         Alert.alert('Modal has been closed.');
                     }}>
-                    <View style={{ marginTop: 40 }}>
-                        <View>
-                            <Text>Hello World! {this.props.informationType}</Text>
-
-
-                            {/* <Icon name="md-close" style={{ position: 'absolute', right: 5, top: 5 }} /> */}
-
-
-                            <TouchableHighlight
-                                onPress={() => {
-                                    this.setModalVisible(!this.state.modalVisible);
-                                }}>
-                                {/* <Icon name="close" /> */}
-                                <Text>Hide Modal</Text>
-                            </TouchableHighlight>
+                    <View style={{ marginTop: 22 }}>
+                        <View style={styles.closeView}>
+                            <Icon
+                                name="close"
+                                size={28}
+                                onPress={() => this.setModalVisible(!this.state.modalVisible)} />
                         </View>
+                        <Text>Hello World! {this.props.informationType}</Text>
+
                     </View>
                 </Modal>
+
+                {this.getImage(this.props.informationType)}
 
                 <TouchableHighlight
                     onPress={() => {
                         this.setModalVisible(true);
                     }}>
-                    {/* <Image style={{ width: 50, height: 50 }} source={require('./snake.png')} /> */}
-                    <Text>{this.props.informationType}</Text>
+
+
+
+                    <Text> {this.props.informationType}</Text>
                 </TouchableHighlight>
-            </View>
+            </View >
         );
     }
 
 }
 
-// item: {
-//     padding: 10,
-//     fontSize: 28,
-//     height: 60,
-//     borderWidth: 1
-// }
+const styles = StyleSheet.create({
+    closeView: {
+        paddingRight: 18,
+        alignSelf: 'flex-end',
+        justifyContent: 'center',
+    },
+});
