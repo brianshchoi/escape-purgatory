@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, TouchableHighlight, Modal, Alert, Image } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, Modal, Alert, Image } from 'react-native';
 import { Icon } from 'react-native-elements'
 
 export default class InformationModal extends React.Component {
@@ -40,14 +40,14 @@ export default class InformationModal extends React.Component {
 
     getDifficulty(difficulty) {
         return <Image
-            style={{width: 240, height: 40}}
+            style={{ width: 240, height: 40 }}
             source={this.difficultyList[difficulty]}
         />
     }
 
     render() {
         return (
-            <View style={{ marginTop: 40 }}>
+            <View style={{ marginTop: 40, padding: 18 }}>
                 <Modal
                     animationType="slide"
                     transparent={false}
@@ -67,17 +67,11 @@ export default class InformationModal extends React.Component {
                     </View>
                 </Modal>
 
-                {this.getImage(this.props.informationType)}
+                <TouchableOpacity style={styles.blocks} onPress={() => this.setModalVisible(true)}>
+                    {this.getImage(this.props.informationType)}
+                    <Text style={styles.blockText}> {this.props.informationType} </Text>
+                </TouchableOpacity>
 
-                <TouchableHighlight
-                    onPress={() => {
-                        this.setModalVisible(true);
-                    }}>
-
-
-
-                    <Text> {this.props.informationType}</Text>
-                </TouchableHighlight>
             </View >
         );
     }
@@ -90,4 +84,11 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-end',
         justifyContent: 'center',
     },
+
+    blockText: {
+        paddingTop: 5,
+        textAlign: 'center',
+        textAlignVertical: 'center',
+        fontSize: 20
+    }
 });
