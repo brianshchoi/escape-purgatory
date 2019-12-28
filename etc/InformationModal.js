@@ -13,6 +13,15 @@ export default class InformationModal extends React.Component {
         "Wrath": require("../assets/sin-icons/Wrath.png"),
         "Sloth": require("../assets/sin-icons/Sloth.png")
     }
+    koreanList = {
+        "Envy": '(질투)',
+        "Gluttony": "(탐식)",
+        "Greed": "(탐욕)",
+        "Lust": "(미색)",
+        "Pride": "(교만)",
+        "Wrath": "(분노)",
+        "Sloth": "(나태)",
+    }
     difficultyList = {
         "Envy": require('../stars/3.jpg'),
         "Gluttony": require('../stars/2.jpg'),
@@ -22,6 +31,16 @@ export default class InformationModal extends React.Component {
         "Wrath": require('../stars/4.jpg'),
         "Sloth": require('../stars/5.png')
     }
+    descriptionList = {
+        "Envy": '잘난 체하며 뽐내고 건방짐. 혹은 겸손하지 않거나 남에게 가르침을 받지 않으려고 하는 것. 교만을 이기려면 겸손한 자세, 그리고 가르침을 받아 드릴 열린 마음이 필요합니다.',
+        "Gluttony": '잘난 체하며 뽐내고 건방짐. 혹은 겸손하지 않거나 남에게 가르침을 받지 않으려고 하는 것. 교만을 이기려면 겸손한 자세, 그리고 가르침을 받아 드릴 열린 마음이 필요합니다.',
+        "Greed": '잘난 체하며 뽐내고 건방짐. 혹은 겸손하지 않거나 남에게 가르침을 받지 않으려고 하는 것. 교만을 이기려면 겸손한 자세, 그리고 가르침을 받아 드릴 열린 마음이 필요합니다.',
+        "Lust": '잘난 체하며 뽐내고 건방짐. 혹은 겸손하지 않거나 남에게 가르침을 받지 않으려고 하는 것. 교만을 이기려면 겸손한 자세, 그리고 가르침을 받아 드릴 열린 마음이 필요합니다.',
+        "Pride": '잘난 체하며 뽐내고 건방짐. 혹은 겸손하지 않거나 남에게 가르침을 받지 않으려고 하는 것. 교만을 이기려면 겸손한 자세, 그리고 가르침을 받아 드릴 열린 마음이 필요합니다.',
+        "Wrath": '잘난 체하며 뽐내고 건방짐. 혹은 겸손하지 않거나 남에게 가르침을 받지 않으려고 하는 것. 교만을 이기려면 겸손한 자세, 그리고 가르침을 받아 드릴 열린 마음이 필요합니다.',
+        "Sloth": '잘난 체하며 뽐내고 건방짐. 혹은 겸손하지 않거나 남에게 가르침을 받지 않으려고 하는 것. 교만을 이기려면 겸손한 자세, 그리고 가르침을 받아 드릴 열린 마음이 필요합니다.',
+    }
+    
 
     state = {
         modalVisible: false,
@@ -44,6 +63,13 @@ export default class InformationModal extends React.Component {
             source={this.difficultyList[difficulty]}
         />
     }
+    getDescription(description){
+        return <Text>{this.descriptionList[description]}</Text>
+    }
+
+    getKorean(korean){
+        return <Text>{this.koreanList[korean]}</Text>
+    }
 
     render() {
         return (
@@ -62,7 +88,8 @@ export default class InformationModal extends React.Component {
                                 size={28}
                                 onPress={() => this.setModalVisible(!this.state.modalVisible)} />
                         </View>
-                        <Text>Hello World! {this.props.informationType}</Text>
+                        <Text style={styles.closeView}>{this.props.informationType} {this.getKorean(this.props.informationType)}</Text>
+                        <Text>{this.getDescription(this.props.informationType)}</Text>
                         {this.getDifficulty(this.props.informationType)}
                     </View>
                 </Modal>
