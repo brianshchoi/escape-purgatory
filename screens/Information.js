@@ -18,10 +18,10 @@ export default class Information extends React.Component {
     render() {
         return (
             <View style={style.container}>
-                <Text> Escape Purgatory </Text>
+                <Text style={style.header}> Escape Purgatory </Text>
                 <FlatList
                     data={sins}
-                    renderItem={({ item }) => <InformationModal informationType={item.key} />}
+                    renderItem={({ item }) => <InformationModal sinType={item.key} />}
                     numColumns={3}
                 />
             </View>
@@ -39,5 +39,7 @@ const style = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center'
     },
-
+    header: {
+        fontSize: 40,
+    }
 })

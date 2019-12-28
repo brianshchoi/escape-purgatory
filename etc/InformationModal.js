@@ -95,8 +95,8 @@ export default class InformationModal extends React.Component {
                 </Modal>
 
                 <TouchableOpacity style={styles.blocks} onPress={() => this.setModalVisible(true)}>
-                    {this.getImage(this.props.informationType)}
-                    <Text style={styles.blockText}> {this.props.informationType} </Text>
+                    {this.getImage(this.props.sinType)}
+                    <Text style={styles.blockText}> {this.props.sinType} </Text>
                 </TouchableOpacity>
 
             </View >
@@ -113,9 +113,23 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 30
     },
-
+    title: {
+        textAlign: 'center',
+        textAlignVertical: 'center',
+        fontSize: 40,
+        paddingBottom: 12,
+    },
+    difficulty: {
+        alignSelf: 'center',
+        width: "60%",
+        height: 40,
+        marginBottom: 18,
+    },
+    description: {
+        fontSize: 24,
+        padding: 18,
+    },
     blockText: {
-        paddingTop: 5,
         textAlign: 'center',
         textAlignVertical: 'center',
         fontSize: 20
