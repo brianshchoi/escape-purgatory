@@ -12,7 +12,7 @@ export default class Maps extends React.Component {
                     imageWidth={Dimensions.get('window').width}
                     imageHeight={Dimensions.get('window').height}>
                     <Image style={style.rotation}
-                        source={require('./../Map/map1.png')} />
+                        source={require('./../Map/Map.jpg')} />
                 </ImageZoom>
         )
     }

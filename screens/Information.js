@@ -10,6 +10,8 @@ const sins = [
     { key: 'Sloth' },
     { key: 'Wrath' },
     { key: 'Envy' },
+    { key: 'Money'},
+    {key: 'Hell'}
 ]
 
 
