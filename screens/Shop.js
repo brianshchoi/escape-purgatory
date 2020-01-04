@@ -22,7 +22,7 @@ const item = [
 ]
 
 
-export default class ScreenTwo extends React.Component {
+export default class Shop extends React.Component {
 
 
     render() {

@@ -25,6 +25,12 @@
     ],
     "ios": {
       "supportsTablet": true
+    },
+    "android": {
+      "package": "com.brianchoi.escapepurgatory",
+      "versionCode": 1,
+      "permissions": [],
+      "icon": "./assets/icon.png"
     }
   }
 }
